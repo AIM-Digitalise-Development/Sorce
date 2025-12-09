@@ -15,7 +15,7 @@ const Sidebar = () => {
       <ul className="space-y-3">
         {[
           { path: "/", label: "Home", icon: <FaHome /> },
-          { path: "/change-password", label: "Change Password", icon: <FaKey /> }, // ✅ Updated icon
+          // { path: "/change-password", label: "Change Password", icon: <FaKey /> }, // ✅ Updated icon
 
           { path: "/banner", label: "Manage Banners", icon: <FaThLarge /> },
           { path: "/gallery", label: "Manage Gallery", icon: <FaImage /> },

@@ -9,8 +9,8 @@ connectDB();
 
 const createAdmin = async () => {
   try {
-    const email = "scadmin@gmail.com";
-    const password = "Admin@12345"; 
+    const email = "scan@gmail.com";
+    const password = "Admindd@12345"; 
 
     // ✅ Check if admin already exists
     const existingAdmin = await Admin.findOne({ email });
