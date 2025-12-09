@@ -36,9 +36,9 @@ const Navbar = () => {
       <div className="flex justify-between items-center">
         {/* Left side: Logo */}
         <NavLink to="/">
-        <img src="/assets/logo.png" alt="Company Logo" className="h-12 w-18 cursor-pointer" />
+          <img src="/assets/logo.png" alt="Company Logo" className="h-12 w-18 cursor-pointer" />
 
-  </NavLink>
+        </NavLink>
 
 
         {/* Middle: Navigation Links */}
@@ -46,8 +46,7 @@ const Navbar = () => {
           <NavLink
             to="/"
             className={({ isActive }) =>
-              `hover:text-red-600 ${
-                isActive ? "text-red-600 font-bold" : ""
+              `hover:text-red-600 ${isActive ? "text-red-600 font-bold" : ""
               }`
             }
           >
@@ -57,8 +56,7 @@ const Navbar = () => {
           <NavLink
             to="/about"
             className={({ isActive }) =>
-              `hover:text-red-600 ${
-                isActive ? "text-red-600 font-bold" : ""
+              `hover:text-red-600 ${isActive ? "text-red-600 font-bold" : ""
               }`
             }
           >
@@ -67,8 +65,7 @@ const Navbar = () => {
           <NavLink
             to="/gallery"
             className={({ isActive }) =>
-              `hover:text-red-600 ${
-                isActive ? "text-red-600 font-bold" : ""
+              `hover:text-red-600 ${isActive ? "text-red-600 font-bold" : ""
               }`
             }
           >
@@ -77,56 +74,57 @@ const Navbar = () => {
           <NavLink
             to="/activities"
             className={({ isActive }) =>
-              `hover:text-red-600 ${
-                isActive ? "text-red-600 font-bold" : ""
+              `hover:text-red-600 ${isActive ? "text-red-600 font-bold" : ""
               }`
             }
           >
-          Products
+            Products
           </NavLink>
           <NavLink
             to="/contact"
             className={({ isActive }) =>
-              `hover:text-red-600 ${
-                isActive ? "text-red-600 font-bold" : ""
+              `hover:text-red-600 ${isActive ? "text-red-600 font-bold" : ""
               }`
             }
           >
             Contact
           </NavLink>
-            <NavLink
-            to="/review"
-            className={({ isActive }) =>
-              `hover:text-red-600 ${
-                isActive ? "text-red-600 font-bold" : ""
-              }`
-            }
-          >
-          Reviews
-          </NavLink>
-          
+          <NavLink
+  to="/review"
+  className={({ isActive }) =>
+    `block px-4 py-2 ${
+      isActive ? "text-red-600 font-bold" : "hover:text-red-600"
+    }`
+  }
+  onClick={toggleMenu}
+>
+  Reviews
+</NavLink>
+
+
+
         </div>
 
         {/* Let's Talk Button */}
         <div className="hidden md:flex items-center space-x-2">
-  <NavLink to="/contact">
-    <button className="flex items-center bg-red-600 text-white px-4 py-2 rounded-full hover:bg-gray-600 transition duration-300">
-      <span className="mr-2">book now</span>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-5 w-5"
-        viewBox="0 0 20 20"
-        fill="currentColor"
-      >
-        <path
-          fillRule="evenodd"
-          d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
-          clipRule="evenodd"
-        />
-      </svg>
-    </button>
-  </NavLink>
-</div>
+          <NavLink to="/contact">
+            <button className="flex items-center bg-red-600 text-white px-4 py-2 rounded-full hover:bg-gray-600 transition duration-300">
+              <span className="mr-2">book now</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+          </NavLink>
+        </div>
 
         {/* Mobile Menu Toggle Button */}
         <div className="md:hidden">
@@ -149,14 +147,13 @@ const Navbar = () => {
         </div>
       </div>
 
-       {/* Mobile Menu */}
-       {isMenuOpen && (
+      {/* Mobile Menu */}
+      {isMenuOpen && (
         <div className="md:hidden mt-4 space-y-2">
           <NavLink
             to="/"
             className={({ isActive }) =>
-              `block px-4 py-2 ${
-                isActive ? "text-red-600 font-bold" : "hover:text-red-600"
+              `block px-4 py-2 ${isActive ? "text-red-600 font-bold" : "hover:text-red-600"
               }`
             }
             onClick={toggleMenu}
@@ -164,13 +161,12 @@ const Navbar = () => {
             Home
           </NavLink>
 
-         
+
 
           <NavLink
             to="/about"
             className={({ isActive }) =>
-              `block px-4 py-2 ${
-                isActive ? "text-red-600 font-bold" : "hover:text-red-600"
+              `block px-4 py-2 ${isActive ? "text-red-600 font-bold" : "hover:text-red-600"
               }`
             }
             onClick={toggleMenu}
@@ -180,8 +176,7 @@ const Navbar = () => {
           <NavLink
             to="/gallery"
             className={({ isActive }) =>
-              `block px-4 py-2 ${
-                isActive ? "text-red-600 font-bold" : "hover:text-red-600"
+              `block px-4 py-2 ${isActive ? "text-red-600 font-bold" : "hover:text-red-600"
               }`
             }
             onClick={toggleMenu}
@@ -191,8 +186,7 @@ const Navbar = () => {
           <NavLink
             to="/activities"
             className={({ isActive }) =>
-              `block px-4 py-2 ${
-                isActive ? "text-red-600 font-bold" : "hover:text-red-600"
+              `block px-4 py-2 ${isActive ? "text-red-600 font-bold" : "hover:text-red-600"
               }`
             }
             onClick={toggleMenu}
@@ -202,8 +196,7 @@ const Navbar = () => {
           <NavLink
             to="/contact"
             className={({ isActive }) =>
-              `block px-4 py-2 ${
-                isActive ? "text-red-600 font-bold" : "hover:text-red-600"
+              `block px-4 py-2 ${isActive ? "text-red-600 font-bold" : "hover:text-red-600"
               }`
             }
             onClick={toggleMenu}
