@@ -203,6 +203,17 @@ const Navbar = () => {
           >
             Contact
           </NavLink>
+          <NavLink
+  to="/review"
+  className={({ isActive }) =>
+    `block px-4 py-2 ${
+      isActive ? "text-red-600 font-bold" : "hover:text-red-600"
+    }`
+  }
+  onClick={toggleMenu}
+>
+  Reviews
+</NavLink>
 
           {/* Let's Talk Button */}
           <NavLink to="/contact" className="block">
