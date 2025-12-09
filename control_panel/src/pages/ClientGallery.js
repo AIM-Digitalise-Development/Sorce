@@ -96,7 +96,7 @@ const ClientGallery = () => {
               <tr key={image._id} className="border-b">
                 <td className="py-3 px-6 text-center">
                   <img
-                    src={`http://localhost:5000${image.fileUrl}`}
+                    src={`https://sorce.onrender.com${image.fileUrl}`}
                     alt="client"
                     className="w-32 h-20 object-cover rounded"
                   />

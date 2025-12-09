@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api", // Updated to live backend URL
+  baseURL: "https://sorce.onrender.com/api", // Updated to live backend URL
 });
 
 // Request Interceptor: Add `Authorization` header
@@ -28,7 +28,7 @@ API.interceptors.response.use(
         const refreshToken = localStorage.getItem("refreshToken");
 
         if (refreshToken) {
-          const { data } = await axios.post("http://localhost:5000/api/admin/refresh-token", {
+          const { data } = await axios.post("https://sorce.onrender.com/api/admin/refresh-token", {
             refreshToken,
           });
 
