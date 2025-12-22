@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Logo & About */}
         <div>
-          <img src="/assets/logo.png" alt="Company Logo" className="w-32 mb-4" />
+          <img src="/assets/logo.jpeg" alt="Company Logo" className="w-32 mb-4" />
           <p className="text-sm text-gray-300 text-justify">
             Why Choose Us<br /><br />
             Based in Kolkata, we provide comprehensive hospital solutions — from securing licenses to supplying top-quality medical equipment and trained staff. Our nurses, ayas, and healthcare assistants are skilled, reliable, and maintain the highest hygiene standards. <br /><br />

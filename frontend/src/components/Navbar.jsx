@@ -3,7 +3,7 @@ import React from 'react';
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa"; // Import dropdown icon
-// import logo from "../assets/logo.png"; 
+// import logo from "../assets/logo.jpeg"; 
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,7 +36,7 @@ const Navbar = () => {
       <div className="flex justify-between items-center">
         {/* Left side: Logo */}
         <NavLink to="/">
-        <img src="/assets/logo.png" alt="Company Logo" className="h-12 w-18 cursor-pointer" />
+        <img src="/assets/logo.jpeg" alt="Company Logo" className="h-12 w-18 cursor-pointer" />
 
   </NavLink>
 
@@ -165,9 +165,6 @@ const Navbar = () => {
           >
             Home
           </NavLink>
-
-         
-
           <NavLink
             to="/about"
             className={({ isActive }) =>
