@@ -1,15 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import Footer from "../components/Footer";
-
-// Carousel Images
-const carouselImages = [
-  "/assets/gallery11.jpg",
-  "/assets/gallery12.jpg",
-  "/assets/gallery13.jpg",
-  "/assets/gallery14.jpg",
-];
 
 // Hospital Services Data
 const services = [
@@ -27,7 +18,7 @@ const services = [
   },
   
   {
-    title: "HOSPITAL PLANNING ,FACILITY ",
+    title: "HOSPITAL PLANNING & FACILITY ",
     images: ["/assets/gallery14.jpg", "/assets/gallery11.jpg", "/assets/gallery12.jpg"],
     details: [
       "Complete hospital planning and layout design",
@@ -64,17 +55,6 @@ const services = [
     ],
     quote: "Equipping hospitals for precision and efficiency."
   },
-  // {
-  //   title: "MANPOWER SERVICES",
-  //   details: [
-  //     "Permanent or contractual staffing support",
-  //     "Trained nurses, technicians, and support staff",
-  //     "Efficient administrative & facility management",
-  //     "We provide staffing solutions that meet hospital needs",
-  //     "Reliable teams to keep your hospital running smoothly"
-  //   ],
-  //   quote: "Dedicated professionals for exceptional patient care."
-  // },
   {
     title: "ANNUAL MAINTENANCE",
     images: ["/assets/gallery12.jpg", "/assets/gallery13.jpg", "/assets/gallery14.jpg"],
@@ -90,7 +70,6 @@ const services = [
 ];
 
 const AboutUsPage = () => {
-  const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
   const [selectedService, setSelectedService] = useState(null); // for modal
   const [modalImageIndex, setModalImageIndex] = useState(0);
 
@@ -105,18 +84,6 @@ const AboutUsPage = () => {
     }, 1200);
     return () => clearInterval(interval);
   }, [selectedService]);
-
-  const nextImage = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex >= carouselImages.length - 2 ? 0 : prevIndex + 2
-    );
-  };
-
-  const prevImage = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === 0 ? carouselImages.length - 2 : prevIndex - 2
-    );
-  };
 
   return (
     <div className="bg-gray-100 min-h-screen">
@@ -213,7 +180,6 @@ const AboutUsPage = () => {
                   alt={selectedService.title}
                   className="w-full h-full object-cover"
                 />
-                {/* Navigation buttons removed — carousel is autoplaying */}
               </div>
 
               <h2 className="text-2xl font-bold mb-4">{selectedService.title}</h2>
@@ -228,31 +194,8 @@ const AboutUsPage = () => {
         </div>
       )}
 
-      {/* Image Carousel */}
-      <div className="container mx-auto my-20 px-6 relative">
-        <div className="relative w-full h-[400px] flex gap-4 overflow-hidden rounded-lg shadow-lg">
-          {carouselImages.slice(currentImageIndex, currentImageIndex + 2).map((img, index) => (
-            <img
-              key={index}
-              src={img}
-              alt="Hospital"
-              className="w-1/2 h-full object-cover rounded-lg"
-            />
-          ))}
-        </div>
-        <button
-          onClick={prevImage}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 p-3 rounded-full shadow-md hover:bg-white transition"
-        >
-          <FaArrowLeft className="text-gray-800 text-xl" />
-        </button>
-        <button
-          onClick={nextImage}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 p-3 rounded-full shadow-md hover:bg-white transition"
-        >
-          <FaArrowRight className="text-gray-800 text-xl" />
-        </button>
-      </div>
+      {/* Removed Image Carousel Section */}
+      
       <a
         href="https://wa.me/919875680537?text=i%20have%20a%20query."
         target="_blank"
