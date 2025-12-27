@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import Footer from "../components/Footer";
@@ -15,6 +15,7 @@ const carouselImages = [
 const services = [
   {
     title: "LICENSE MANAGEMENT",
+    images: ["/assets/gallery11.jpg", "/assets/gallery12.jpg", "/assets/gallery13.jpg"],
     details: [
       "Obtain Clinical Establishment License",
       "Fire NOC and Pollution Certificate",
@@ -24,8 +25,10 @@ const services = [
     ],
     quote: "Compliance is the foundation of safe healthcare."
   },
+  
   {
-    title: "HOSPITAL PLANNING ,FACILITY WITH MANPOWER SERVICES",
+    title: "HOSPITAL PLANNING ,FACILITY ",
+    images: ["/assets/gallery14.jpg", "/assets/gallery11.jpg", "/assets/gallery12.jpg"],
     details: [
       "Complete hospital planning and layout design",
       "Construction and setup of all facility zones",
@@ -41,7 +44,8 @@ const services = [
     quote: "Building hospitals that care before patients arrive."
   },
   {
-    title: "MEDICAL EQUIPMENTS",
+    title: "MEDICAL EQUIPMENTS & SERVICES",
+    images: ["/assets/gallery13.jpg", "/assets/gallery14.jpg", "/assets/gallery11.jpg"],
     details: [
       "Radiology: X-Ray (CR & DR), Ultrasound, CT & MRI support",
       "OPD (Outpatient Department): Examination tables & couches, Stethoscopes, BP apparatus, thermometers, Weighing scales, height measuring stand, Diagnostic sets (otoscope, ophthalmoscope), Basic dressing instruments, Patient chairs & doctor stools, Computers & registration desks.",
@@ -73,6 +77,7 @@ const services = [
   // },
   {
     title: "ANNUAL MAINTENANCE",
+    images: ["/assets/gallery12.jpg", "/assets/gallery13.jpg", "/assets/gallery14.jpg"],
     details: [
       "Regular maintenance of hospital machinery",
       "Renewal and management of necessary licenses",
@@ -87,6 +92,19 @@ const services = [
 const AboutUsPage = () => {
   const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
   const [selectedService, setSelectedService] = useState(null); // for modal
+  const [modalImageIndex, setModalImageIndex] = useState(0);
+
+  // Auto-play modal carousel every 1.2s when modal open
+  useEffect(() => {
+    if (!selectedService) return;
+    const interval = setInterval(() => {
+      setModalImageIndex((i) => {
+        const len = selectedService.images?.length || 1;
+        return (i + 1) % len;
+      });
+    }, 1200);
+    return () => clearInterval(interval);
+  }, [selectedService]);
 
   const nextImage = () => {
     setCurrentImageIndex((prevIndex) =>
@@ -114,61 +132,90 @@ const AboutUsPage = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="absolute inset-0 flex items-center justify-center text-white text-5xl font-bold bg-black/60 text-center px-4"
+          className="absolute inset-0 flex items-center justify-center bg-black/60 text-center px-4"
         >
-          About Our Medical Services
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="text-3xl md:text-5xl font-extrabold text-white leading-tight">
+              Welcome to Our Hospital Solutions!
+            </h1>
+            <p className="mt-4 text-sm md:text-base text-white/90">
+              We specialize in building, equipping, and supporting hospitals with everything required for modern medical care — from licenses and infrastructure to manpower and medical equipment. Our goal is to enable hospitals to deliver the highest standard of care.
+            </p>
+          </div>
         </motion.div>
       </div>
-
-      {/* Introduction */}
-      <div className="container mx-auto my-20 px-6 text-center">
-        <h2 className="text-4xl font-bold mb-6 text-gray-800">
-          Welcome to Our Hospital Solutions!
-        </h2>
-        <p className="text-lg text-gray-700 max-w-2xl mx-auto mb-6">
-          We specialize in building, equipping, and supporting hospitals with everything required for modern medical care — from licenses and infrastructure to manpower and medical equipment. Our goal is to enable hospitals to deliver the highest standard of care.
-        </p>
-      </div>
+      
 
       {/* Services Section */}
       <div className="bg-gray-50 py-16">
         <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold mb-12 text-center text-red-500">Our Services</h2>
+          <h2 className="text-3xl font-bold mb-12 text-center text-red-500">About Our Medical Services</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-            {services.map((service, idx) => (
-              <div
-                key={idx}
-                className="bg-white p-6 rounded-lg shadow-md cursor-pointer hover:shadow-2xl transition"
-                onClick={() => setSelectedService(service)}
-              >
-                <h3 className="text-2xl font-bold mb-4 text-red-500">{service.title}</h3>
-                <p className="text-gray-700">
-                  {service.details.slice(0, 2).join(", ")}...
-                </p>
-                <p className="mt-2 italic text-gray-500">"{service.quote}"</p>
-              </div>
-            ))}
+            {services.map((service, idx) => {
+              const fullText = (service.details || []).join(" ");
+              const preview = fullText.length > 140 ? fullText.slice(0, 140).trim() + "..." : fullText;
+              return (
+                <div
+                  key={idx}
+                  className="relative p-6 rounded-lg shadow-md cursor-pointer hover:shadow-2xl transition overflow-hidden min-h-[200px] flex flex-col justify-end"
+                  onClick={() => {
+                    setSelectedService(service);
+                    setModalImageIndex(0);
+                  }}
+                  style={{
+                    backgroundImage: `url(${service.images?.[0] || '/assets/gallery11.jpg'})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  }}
+                >
+                  <div className="absolute inset-0 bg-black/40"></div>
+                  <div className="relative z-10">
+                    <h3 className="text-xl md:text-2xl font-extrabold mb-2 text-white uppercase leading-tight">{service.title}</h3>
+                    <p className="text-white/90 text-sm md:text-base leading-relaxed">{preview}</p>
+                    <p className="mt-2 italic text-white/80 text-sm">"{service.quote}"</p>
+                    <div className="mt-3">
+                      <span className="inline-block bg-white/20 text-white px-3 py-1 rounded cursor-pointer">Click me to know more</span>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
 
       {/* Modal */}
       {selectedService && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+          onClick={() => setSelectedService(null)}
+        >
           <motion.div
             className="bg-white rounded-xl shadow-lg max-w-lg w-full max-h-[80vh] flex flex-col overflow-hidden relative"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
+            onClick={(e) => e.stopPropagation()}
           >
+            <button
+              onClick={() => setSelectedService(null)}
+              className="absolute top-3 right-3 bg-white/90 p-2 rounded-full shadow-md z-50 hover:bg-white"
+            >
+              &times;
+            </button>
             <div className="p-6 overflow-y-auto flex-1">
-              <button
-                onClick={() => setSelectedService(null)}
-                className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-xl font-bold"
-              >
-                &times;
-              </button>
+
+              {/* Sticky Carousel at top of modal */}
+              <div className="sticky top-0 bg-white z-20 w-full h-48 mb-4 rounded-md overflow-hidden">
+                <img
+                  src={selectedService.images?.[modalImageIndex] || "/assets/gallery11.jpg"}
+                  alt={selectedService.title}
+                  className="w-full h-full object-cover"
+                />
+                {/* Navigation buttons removed — carousel is autoplaying */}
+              </div>
+
               <h2 className="text-2xl font-bold mb-4">{selectedService.title}</h2>
               <p className="italic text-gray-500 mb-4">"{selectedService.quote}"</p>
               <ul className="list-disc list-inside text-gray-700 space-y-2">

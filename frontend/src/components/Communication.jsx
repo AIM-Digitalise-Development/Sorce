@@ -1,92 +1,99 @@
-import React, { useState } from "react";
-
-const communicationAreas = [
-  { name: "Sovabazar Metro", image: "/assets/comm1.jpg", distance: "1-2 km" },
-  { name: "Shyambazar Metro", image: "/assets/comm2.jpg", distance: "1-2 km" },
-  { name: "Sealdah", image: "/assets/comm3.jpg", distance: "4-5 km" },
-  { name: "Sahitya Parishat Bus Stop", image: "/assets/comm4.jpg", distance: "0.1-0.2 km" },
-  { name: "Rupbani Bus Stop", image: "/assets/comm5.jpg", distance: "0.5-1 km" },
-  { name: "Kolkata Rail Station", image: "/assets/comm6.jpg", distance: "2-3 km" },
-  { name: "Kolkata Airport", image: "/assets/comm7.jpg", distance: "10-12 km" },
-  { name: "Ahiritola Ferry Ghat", image: "/assets/comm8.jpg", distance: "2-3 km" },
-  { name: "Bidhannagar Station", image: "/assets/comm9.jpg", distance: "8-10 km" },
-];
+import React from "react";
+import { motion } from "framer-motion";
+import { FaBullseye, FaLightbulb, FaHandsHelping, FaCogs } from "react-icons/fa";
 
 const CommunicationSection = () => {
-  const [hovered, setHovered] = useState(null);
+  const goals = [
+    { icon: <FaBullseye />, title: "Patient‑Centered Care", text: "Design and deliver facilities that prioritise patient safety, comfort and outcomes." },
+    { icon: <FaCogs />, title: "Operational Excellence", text: "Streamline processes, ensure regulatory compliance and reliable operations." },
+    { icon: <FaLightbulb />, title: "Innovative Solutions", text: "Integrate modern medical technology and smart design for efficient care delivery." },
+    { icon: <FaHandsHelping />, title: "Community Impact", text: "Build sustainable hospitals that serve and uplift local communities." },
+  ];
+
+  const techniques = [
+    { title: "Regulatory Expertise", desc: "End‑to‑end licensing & compliance management to keep projects audit‑ready." },
+    { title: "Smart Design", desc: "Evidence‑based layouts for optimal patient flow and staff efficiency." },
+    { title: "Turnkey Delivery", desc: "From civil works to equipment procurement and commissioning." },
+    { title: "Lifecycle Care", desc: "Preventive maintenance, calibration and long‑term support." },
+  ];
 
   return (
-    <div
-      className="bg-cover bg-center py-20 px-6 lg:px-16 text-center relative"
-      style={{ backgroundImage: "url('/assets/bg-2.jpg')" }}
-    >
-      <div className="absolute inset-0 bg-black bg-opacity-90"></div> 
-      
-      <h2 className="text-4xl font-bold text-white relative z-10 mb-12">
-        Nearby Communication Areas
-      </h2>
+    <section className="relative py-16 px-6 sm:px-10 lg:px-20 bg-gradient-to-b from-white to-sky-50">
+      <div className="max-w-6xl mx-auto">
+        <motion.header initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center mb-10">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight">
+            Our Mission & Approach
+          </h2>
+          <p className="mt-4 text-slate-700 max-w-3xl mx-auto text-sm sm:text-base">
+            We create safe, compliant and future‑ready healthcare facilities — combining regulatory know‑how, smart design and dependable delivery to transform healthcare access for communities.
+          </p>
+        </motion.header>
 
-      <div className="hidden sm:flex relative w-[600px] h-[600px] mx-auto">
-        <div className="absolute inset-0 flex justify-center items-center">
-          <img
-            src="/assets/gallery1.jpg"
-            alt="Our PG"
-            className="w-40 h-40 lg:w-48 lg:h-48 rounded-full border-4 border-white shadow-lg transform hover:scale-105 transition duration-300 relative z-10"
-          />
+        {/* Goals - updated card colours */}
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1, duration: 0.6 }} className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+          {goals.map((g, i) => (
+            <div
+              key={i}
+              className="flex gap-4 items-start rounded-2xl p-6 shadow-lg transition hover:shadow-xl"
+              style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.95), rgba(239,246,255,0.8))", border: "1px solid rgba(99,102,241,0.08)" }}
+            >
+              <div className="flex-none text-2xl text-indigo-500 mt-1">{g.icon}</div>
+              <div>
+                <h3 className="text-lg font-semibold text-slate-900">{g.title}</h3>
+                <p className="text-sm text-slate-600 mt-1">{g.text}</p>
+              </div>
+            </div>
+          ))}
+        </motion.div>
+
+        {/* Techniques / How we work - updated card colours */}
+        <div className="mb-8">
+          <h4 className="text-xl font-semibold text-slate-900 mb-4">How we deliver</h4>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {techniques.map((t, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ y: -6 }}
+                className="rounded-xl p-5 shadow transition"
+                style={{ background: "linear-gradient(180deg, #ffffff, #fffaf6)", border: "1px solid rgba(249,115,22,0.06)" }}
+              >
+                <h5 className="font-semibold text-slate-900">{t.title}</h5>
+                <p className="text-sm text-slate-600 mt-2">{t.desc}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
-        {communicationAreas.map((place, index) => {
-          const angle = (index / communicationAreas.length) * 2 * Math.PI;
-          const radius = 270;
-          const x = Math.cos(angle) * radius;
-          const y = Math.sin(angle) * radius;
+        {/* CTA */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
+          <button className="bg-gradient-to-r from-rose-600 to-pink-500 text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:scale-[1.02] transition">
+            Talk to an Expert
+          </button>
+          <button className="bg-white text-slate-900 px-6 py-3 rounded-full font-semibold border border-gray-200 shadow-sm hover:bg-gray-50 transition">
+            Request a Proposal
+          </button>
+        </div>
 
-          return (
-            <div
-              key={place.name}
-              className="absolute transform -translate-x-1/2 -translate-y-1/2 text-white"
-              style={{ left: `calc(50% + ${x}px)`, top: `calc(50% + ${y}px)` }}
-            >
-              <img
-                src={place.image}
-                alt={place.name}
-                className="w-24 h-24 rounded-full border-4 border-red-700 shadow-md object-cover transform hover:scale-110 transition duration-300 relative z-10"
-                onMouseEnter={() => setHovered(place.name)}
-                onMouseLeave={() => setHovered(null)}
-              />
-              <p className="text-sm font-semibold mt-2 relative z-10">
-                {place.name}
-              </p>
-              {hovered === place.name && (
-                <p className="text-xs bg-gray-800 text-white px-2 py-1 rounded absolute mt-2">
-                  {place.distance}
-                </p>
-              )}
+        {/* Bottom 3-column list - updated card colours */}
+        <div className="mt-6">
+          <h4 className="text-lg font-semibold text-slate-900 mb-4 text-center">Our Facilities & Services</h4>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="rounded-xl p-6 shadow" style={{ background: "linear-gradient(135deg,#ffffff,#f0f9ff)", border: "1px solid rgba(14,165,233,0.06)" }}>
+              <h6 className="font-semibold text-slate-900">Clinical Infrastructure</h6>
+              <p className="text-sm text-slate-600 mt-2">ICUs, OTs, Imaging suites and diagnostic labs built to international standards.</p>
             </div>
-          );
-        })}
-      </div>
-
-      <div className="sm:hidden grid grid-cols-2 gap-6 relative z-10">
-        {communicationAreas.map((place) => (
-          <div key={place.name} className="flex flex-col items-center">
-            <img
-              src={place.image}
-              alt={place.name}
-              className="w-24 h-24 rounded-full border-4 border-red-700 shadow-md object-cover transform hover:scale-110 transition duration-300"
-              onMouseEnter={() => setHovered(place.name)}
-              onMouseLeave={() => setHovered(null)}
-            />
-            <p className="text-sm font-semibold mt-2">{place.name}</p>
-            {hovered === place.name && (
-              <p className="text-xs bg-gray-800 text-white px-2 py-1 rounded mt-1">
-                {place.distance}
-              </p>
-            )}
+            <div className="rounded-xl p-6 shadow" style={{ background: "linear-gradient(135deg,#ffffff,#fff7f0)", border: "1px solid rgba(249,115,22,0.06)" }}>
+              <h6 className="font-semibold text-slate-900">Medical Equipment</h6>
+              <p className="text-sm text-slate-600 mt-2">CR/DR, CT, MRI, Ventilators, Multipara monitors and more with installation & calibration.</p>
+            </div>
+            <div className="rounded-xl p-6 shadow" style={{ background: "linear-gradient(135deg,#ffffff,#f3fff7)", border: "1px solid rgba(34,197,94,0.06)" }}>
+              <h6 className="font-semibold text-slate-900">Support Services</h6>
+              <p className="text-sm text-slate-600 mt-2">Manpower, logistics, maintenance contracts and compliance management for end‑to‑end operation.</p>
+            </div>
           </div>
-        ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

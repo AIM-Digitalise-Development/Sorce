@@ -17,9 +17,9 @@ const Home = () => {
       <WhoWeAre />
       {/* <Facilities /> */}
       {/* <StatsSection /> */}
-      <OurGallery />
       <Section />
-      {/* <Communication /> */}
+       <Communication />
+      <OurGallery />
       <Footer />
       <ScrollToTop />
 

@@ -13,7 +13,8 @@ const Activities = () => {
 
   // 🆕 Pagination States
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
+  // itemsPerPage: number (0 means show All)
+  const [itemsPerPage, setItemsPerPage] = useState(12);
 
   useEffect(() => {
     const fetchActivities = async () => {
@@ -56,11 +57,16 @@ const Activities = () => {
     setCurrentPage(1); // reset to page 1 on new filter/search
   }, [activities, searchTerm, selectedCategory]);
 
+  // Reset to page 1 whenever itemsPerPage changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [itemsPerPage]);
+
   // 🧮 Pagination Calculations
-  const totalPages = Math.ceil(filteredActivities.length / itemsPerPage);
-  const indexOfLast = currentPage * itemsPerPage;
-  const indexOfFirst = indexOfLast - itemsPerPage;
-  const currentItems = filteredActivities.slice(indexOfFirst, indexOfLast);
+  const totalPages = itemsPerPage === 0 ? 1 : Math.max(1, Math.ceil(filteredActivities.length / itemsPerPage));
+  const indexOfLast = itemsPerPage === 0 ? filteredActivities.length : currentPage * itemsPerPage;
+  const indexOfFirst = itemsPerPage === 0 ? 0 : indexOfLast - itemsPerPage;
+  const currentItems = itemsPerPage === 0 ? filteredActivities : filteredActivities.slice(indexOfFirst, indexOfLast);
 
   const handlePageChange = (pageNumber) => {
     if (pageNumber >= 1 && pageNumber <= totalPages) {
@@ -128,6 +134,8 @@ const Activities = () => {
             </option>
           ))}
         </select>
+        
+        {/* page-size is moved into pagination footer for a simpler layout */}
       </div>
 
       {/* Products */}
@@ -178,56 +186,58 @@ const Activities = () => {
               ))}
             </div>
 
-            {/* Pagination */}
-            {totalPages > 1 && (
-              <nav
-                aria-label="Page navigation example"
-                className="mt-10 flex justify-center"
-              >
-                <ul className="inline-flex items-center -space-x-px">
-                  <li>
-                    <button
-                      onClick={() => handlePageChange(currentPage - 1)}
-                      disabled={currentPage === 1}
-                      className={`px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 ${
-                        currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""
-                      }`}
-                    >
-                      &laquo;
-                    </button>
-                  </li>
+            {/* Pagination footer: left = Prev / pages / Next, right = page-size select */}
+            <div className="mt-10 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  disabled={currentPage === 1}
+                  className={`px-3 py-2 bg-white border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100 ${
+                    currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
+                >
+                  Prev
+                </button>
 
+                <div className="inline-flex items-center space-x-2">
                   {Array.from({ length: totalPages }, (_, i) => (
-                    <li key={i}>
-                      <button
-                        onClick={() => handlePageChange(i + 1)}
-                        className={`px-3 py-2 leading-tight border border-gray-300 ${
-                          currentPage === i + 1
-                            ? "bg-blue-600 text-white"
-                            : "bg-white text-gray-500 hover:bg-gray-100"
-                        }`}
-                      >
-                        {i + 1}
-                      </button>
-                    </li>
-                  ))}
-
-                  <li>
                     <button
-                      onClick={() => handlePageChange(currentPage + 1)}
-                      disabled={currentPage === totalPages}
-                      className={`px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 ${
-                        currentPage === totalPages
-                          ? "opacity-50 cursor-not-allowed"
-                          : ""
+                      key={i}
+                      onClick={() => handlePageChange(i + 1)}
+                      className={`px-3 py-2 leading-tight border border-gray-300 rounded-md ${
+                        currentPage === i + 1
+                          ? "bg-blue-100 text-blue-700"
+                          : "bg-white text-gray-700 hover:bg-gray-100"
                       }`}
                     >
-                      &raquo;
+                      {i + 1}
                     </button>
-                  </li>
-                </ul>
-              </nav>
-            )}
+                  ))}
+                </div>
+
+                <button
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                  className={`px-3 py-2 bg-white border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100 ${
+                    currentPage === totalPages ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
+                >
+                  Next
+                </button>
+              </div>
+
+              <div>
+                <select
+                  value={itemsPerPage}
+                  onChange={(e) => setItemsPerPage(Number(e.target.value))}
+                  className="w-36 border border-gray-300 rounded-lg px-3 py-2 text-gray-700 focus:ring-2 focus:ring-blue-500"
+                >
+                  <option value={12}>12 / page</option>
+                  <option value={24}>24 / page</option>
+                  <option value={0}>All</option>
+                </select>
+              </div>
+            </div>
           </>
         )}
       </div>
