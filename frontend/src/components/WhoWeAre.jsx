@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
@@ -18,6 +18,28 @@ const WhoWeAre = () => {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [activeService, setActiveService] = useState(0);
+  const [modalIndex, setModalIndex] = useState(0);
+  const hoverTimeoutRef = useRef(null);
+
+  // Check if device is mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024); // You can adjust this breakpoint
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -47,33 +69,53 @@ const WhoWeAre = () => {
     }
   ];
 
-  // New modal state + galleries per service (images + captions)
-  const [modalOpen, setModalOpen] = useState(false);
-  const [activeService, setActiveService] = useState(0);
-  const [modalIndex, setModalIndex] = useState(0);
-
   const galleries = [
-    [ // service 0
+    [
       { src: "/assets/gallery1.png", caption: "Licensing & Compliance - Step 1" },
       { src: "/assets/gallery28.png", caption: "Document Preparation" },
       { src: "/assets/gallery29.png", caption: "Approval & Renewal" },
     ],
-    [ // service 1
+    [
       { src: "/assets/gallery28.png", caption: "Site Planning & Layout" },
       { src: "/assets/gallery29.png", caption: "Construction Workflow" },
       { src: "/assets/gallery1.png", caption: "Ready Facility" },
     ],
-    [ // service 2
+    [
       { src: "/assets/gallery29.png", caption: "Diagnostic Equipment Setup" },
       { src: "/assets/gallery1.png", caption: "Imaging Calibration" },
       { src: "/assets/gallery28.png", caption: "Testing & Delivery" },
     ],
-    [ // service 3
+    [
       { src: "/assets/gallery1.png", caption: "Preventive Maintenance" },
       { src: "/assets/gallery28.png", caption: "Calibration & Service" },
       { src: "/assets/gallery29.png", caption: "Compliance Checks" },
     ],
   ];
+
+  // Handle hover on desktop
+  const handleMouseEnter = (index) => {
+    if (!isMobile) {
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
+      }
+      hoverTimeoutRef.current = setTimeout(() => {
+        openModal(index);
+      }, 800); // 800ms delay before opening on hover
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (!isMobile && hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+  };
+
+  // Handle click on mobile
+  const handleClick = (index) => {
+    if (isMobile) {
+      openModal(index);
+    }
+  };
 
   // Open modal for a service
   const openModal = (index) => {
@@ -129,8 +171,13 @@ const WhoWeAre = () => {
                 key={index}
                 whileHover={{ scale: 1.03 }}
                 transition={{ duration: 0.3 }}
-                className="flex items-start gap-3 bg-white/5 backdrop-blur-md border border-white/10 p-3 rounded-xl shadow-sm hover:shadow-md hover:bg-white/10 transition cursor-pointer"
-                onClick={() => openModal(index)}
+                className={`flex items-start gap-3 bg-white/5 backdrop-blur-md border border-white/10 p-3 rounded-xl shadow-sm transition cursor-pointer ${
+                  !isMobile ? 'hover:shadow-md hover:bg-white/10' : ''
+                }`}
+                onClick={() => handleClick(index)}
+                onMouseEnter={() => handleMouseEnter(index)}
+                onMouseLeave={handleMouseLeave}
+                onTouchStart={() => isMobile && handleClick(index)}
               >
                 <motion.div
                   whileHover={{ rotate: 15, scale: 1.1 }}

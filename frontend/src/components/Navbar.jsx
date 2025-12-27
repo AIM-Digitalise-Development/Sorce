@@ -1,15 +1,13 @@
 import React from 'react';
-
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
-import { FaChevronDown } from "react-icons/fa"; // Import dropdown icon
-// import logo from "../assets/logo.png"; 
+import { FaChevronDown } from "react-icons/fa";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCompanyOpen, setIsCompanyOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
-  const [activeItem, setActiveItem] = useState(""); // To track active dropdown item
+  const [activeItem, setActiveItem] = useState("");
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -17,12 +15,12 @@ const Navbar = () => {
 
   const toggleCompanyDropdown = () => {
     setIsCompanyOpen(!isCompanyOpen);
-    setIsServicesOpen(false); // Close Services if open
+    setIsServicesOpen(false);
   };
 
   const toggleServicesDropdown = () => {
     setIsServicesOpen(!isServicesOpen);
-    setIsCompanyOpen(false); // Close Company if open
+    setIsCompanyOpen(false);
   };
 
   const handleItemClick = (item) => {
@@ -34,12 +32,16 @@ const Navbar = () => {
   return (
     <nav className="bg-white text-gray-900 py-4 px-6 relative z-50">
       <div className="flex justify-between items-center">
-        {/* Left side: Logo */}
-        <NavLink to="/">
-        <img src="/assets/logo.png" alt="Company Logo" className="h-12 w-18 cursor-pointer" />
-
-  </NavLink>
-
+        {/* Left side: Logo - Modified with fixed height container */}
+        <div className="flex items-center h-14"> {/* Fixed height container */}
+          <NavLink to="/">
+            <img 
+              src="/assets/logo.png" 
+              alt="Company Logo" 
+              className="h-36 w-40 object-contain cursor-pointer" 
+            />
+          </NavLink>
+        </div>
 
         {/* Middle: Navigation Links */}
         <div className="hidden md:flex space-x-6 items-center">
@@ -165,6 +167,9 @@ const Navbar = () => {
           >
             Home
           </NavLink>
+
+         
+
           <NavLink
             to="/about"
             className={({ isActive }) =>
