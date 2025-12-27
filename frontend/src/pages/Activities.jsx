@@ -85,16 +85,16 @@ const Activities = () => {
 
   return (
     <div>
-      {/* Banner */}
+      {/* Banner - Reduced height from h-[80vh] to h-[50vh] */}
       <div className="relative w-full">
         <img
           src="/assets/med.jpg"
           alt="Products"
-          className="w-full h-[80vh] object-cover"
+          className="w-full h-[50vh] object-cover" // Changed from h-[80vh]
         />
         <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center text-center text-white px-4">
           <motion.h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl font-extrabold leading-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl font-extrabold leading-tight" // Slightly reduced text sizes
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -102,7 +102,7 @@ const Activities = () => {
             Premium Hospital Equipment & Solutions
           </motion.h1>
           <motion.p
-            className="text-lg sm:text-xl md:text-2xl mt-6 font-medium max-w-2xl mx-auto"
+            className="text-base sm:text-lg md:text-xl mt-4 font-medium max-w-2xl mx-auto" // Reduced text sizes and margin
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -114,7 +114,7 @@ const Activities = () => {
       </div>
 
       {/* Search & Filter */}
-      <div className="px-6 md:px-12 py-10 bg-white flex flex-col md:flex-row items-center justify-between gap-4">
+      <div className="px-6 md:px-12 py-8 bg-white flex flex-col md:flex-row items-center justify-between gap-4"> {/* Reduced padding */}
         <input
           type="text"
           placeholder="🔍 Search by name or category..."
@@ -139,8 +139,8 @@ const Activities = () => {
       </div>
 
       {/* Products */}
-      <div className="px-10 py-16 bg-gray-50">
-        <h2 className="text-4xl font-bold text-gray-900 text-center mb-8">
+      <div className="px-10 py-12 bg-gray-50"> {/* Reduced padding */}
+        <h2 className="text-3xl font-bold text-gray-900 text-center mb-6"> {/* Reduced text size and margin */}
           Our Products
         </h2>
 
@@ -150,7 +150,7 @@ const Activities = () => {
           </p>
         ) : (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"> {/* Reduced gap */}
               {currentItems.map((activity, index) => (
                 <motion.div
                   key={activity._id}
@@ -163,7 +163,7 @@ const Activities = () => {
                     <img
                       src={activity.image}
                       alt={activity.title}
-                      className="w-full h-60 object-cover"
+                      className="w-full h-56 object-cover" // Slightly reduced image height
                     />
                     <div className="absolute top-0 left-0 w-full h-full bg-black/10 hover:bg-black/40 transition-all duration-300 flex items-center justify-center opacity-0 hover:opacity-100">
                       <button
@@ -174,8 +174,8 @@ const Activities = () => {
                       </button>
                     </div>
                   </div>
-                  <div className="p-6">
-                    <h3 className="text-2xl font-semibold text-gray-800">
+                  <div className="p-5"> {/* Reduced padding */}
+                    <h3 className="text-xl font-semibold text-gray-800"> {/* Reduced text size */}
                       {activity.title}
                     </h3>
                     <p className="text-gray-500 text-sm mt-1">
@@ -187,7 +187,7 @@ const Activities = () => {
             </div>
 
             {/* Pagination footer: left = Prev / pages / Next, right = page-size select */}
-            <div className="mt-10 flex items-center justify-between">
+            <div className="mt-8 flex items-center justify-between"> {/* Reduced margin */}
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => handlePageChange(currentPage - 1)}
@@ -242,16 +242,42 @@ const Activities = () => {
         )}
       </div>
 
-      {/* Modal */}
+      {/* Modal - FIXED close button visibility */}
       {selectedActivity && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+          onClick={() => setSelectedActivity(null)}
+        >
           <motion.div
             className="bg-white rounded-xl shadow-lg max-w-lg w-full max-h-[80vh] flex flex-col overflow-hidden relative"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
+            onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex-shrink-0">
+            {/* Fixed Close Button - Now clearly visible */}
+            <button
+              onClick={() => setSelectedActivity(null)}
+              className="absolute top-3 right-3 z-50 bg-white hover:bg-gray-100 text-gray-800 hover:text-gray-900 p-2 rounded-full shadow-lg border border-gray-200 flex items-center justify-center w-10 h-10"
+              aria-label="Close"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+
+            <div className="flex-shrink-0 relative">
               <img
                 src={selectedActivity.image}
                 alt={selectedActivity.title}
@@ -260,12 +286,6 @@ const Activities = () => {
             </div>
 
             <div className="p-6 overflow-y-auto flex-1">
-              <button
-                onClick={() => setSelectedActivity(null)}
-                className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-xl font-bold"
-              >
-                &times;
-              </button>
               <h2 className="text-2xl font-bold mb-2">{selectedActivity.title}</h2>
               <p className="text-gray-500 text-sm mb-4">
                 Category: {selectedActivity.category || "N/A"}
