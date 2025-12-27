@@ -23,11 +23,13 @@ const WhoWeAre = () => {
   const [activeService, setActiveService] = useState(0);
   const [modalIndex, setModalIndex] = useState(0);
   const hoverTimeoutRef = useRef(null);
+  const modalTimeoutRef = useRef(null);
+  const modalRef = useRef(null);
 
   // Check if device is mobile
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024); // You can adjust this breakpoint
+      setIsMobile(window.innerWidth < 1024);
     };
     
     checkMobile();
@@ -37,6 +39,9 @@ const WhoWeAre = () => {
       window.removeEventListener('resize', checkMobile);
       if (hoverTimeoutRef.current) {
         clearTimeout(hoverTimeoutRef.current);
+      }
+      if (modalTimeoutRef.current) {
+        clearTimeout(modalTimeoutRef.current);
       }
     };
   }, []);
@@ -92,7 +97,7 @@ const WhoWeAre = () => {
     ],
   ];
 
-  // Handle hover on desktop
+  // Handle hover on desktop - FASTER (200ms instead of 800ms)
   const handleMouseEnter = (index) => {
     if (!isMobile) {
       if (hoverTimeoutRef.current) {
@@ -100,13 +105,32 @@ const WhoWeAre = () => {
       }
       hoverTimeoutRef.current = setTimeout(() => {
         openModal(index);
-      }, 800); // 800ms delay before opening on hover
+      }, 200); // Reduced from 800ms to 200ms
     }
   };
 
   const handleMouseLeave = () => {
     if (!isMobile && hoverTimeoutRef.current) {
       clearTimeout(hoverTimeoutRef.current);
+    }
+  };
+
+  // Handle modal mouse events for auto-close
+  const handleModalMouseEnter = () => {
+    if (!isMobile && modalTimeoutRef.current) {
+      clearTimeout(modalTimeoutRef.current);
+    }
+  };
+
+  const handleModalMouseLeave = () => {
+    if (!isMobile) {
+      // Start closing timer when mouse leaves modal
+      if (modalTimeoutRef.current) {
+        clearTimeout(modalTimeoutRef.current);
+      }
+      modalTimeoutRef.current = setTimeout(() => {
+        setModalOpen(false);
+      }, 300); // Close after 300ms of leaving modal
     }
   };
 
@@ -122,6 +146,11 @@ const WhoWeAre = () => {
     setActiveService(index);
     setModalIndex(0);
     setModalOpen(true);
+  };
+
+  // Close modal
+  const closeModal = () => {
+    setModalOpen(false);
   };
 
   // Auto-advance carousel in modal
@@ -170,8 +199,8 @@ const WhoWeAre = () => {
               <motion.div
                 key={index}
                 whileHover={{ scale: 1.03 }}
-                transition={{ duration: 0.3 }}
-                className={`flex items-start gap-3 bg-white/5 backdrop-blur-md border border-white/10 p-3 rounded-xl shadow-sm transition cursor-pointer ${
+                transition={{ duration: 0.2 }} // Faster transition
+                className={`flex items-start gap-3 bg-white/5 backdrop-blur-md border border-white/10 p-3 rounded-xl shadow-sm transition-all duration-200 cursor-pointer ${
                   !isMobile ? 'hover:shadow-md hover:bg-white/10' : ''
                 }`}
                 onClick={() => handleClick(index)}
@@ -181,6 +210,7 @@ const WhoWeAre = () => {
               >
                 <motion.div
                   whileHover={{ rotate: 15, scale: 1.1 }}
+                  transition={{ duration: 0.2 }} // Faster icon animation
                   className="text-2xl mt-1"
                 >
                   {item.icon}
@@ -206,7 +236,10 @@ const WhoWeAre = () => {
       {modalOpen && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
-          onClick={() => setModalOpen(false)}
+          onClick={closeModal}
+          onMouseEnter={handleModalMouseEnter}
+          onMouseLeave={handleModalMouseLeave}
+          ref={modalRef}
         >
           <motion.div
             className="bg-white/5 backdrop-blur-md rounded-2xl max-w-2xl w-full overflow-hidden relative shadow-xl"
@@ -214,10 +247,12 @@ const WhoWeAre = () => {
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.2 }}
+            onMouseEnter={handleModalMouseEnter}
+            onMouseLeave={handleModalMouseLeave}
           >
             <button
-              className="absolute top-3 right-3 text-white bg-black/50 p-2 rounded-full hover:bg-black/70"
-              onClick={() => setModalOpen(false)}
+              className="absolute top-3 right-3 text-white bg-black/50 p-2 rounded-full hover:bg-black/70 transition-colors duration-200 z-10"
+              onClick={closeModal}
               aria-label="Close"
             >
               <FaTimes />
@@ -231,7 +266,7 @@ const WhoWeAre = () => {
                   alt="gallery"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ duration: 0.8 }}
+                  transition={{ duration: 0.5 }} // Faster image transition
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
@@ -243,7 +278,7 @@ const WhoWeAre = () => {
                   key={galleries[activeService][modalIndex].caption}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
+                  transition={{ duration: 0.3 }} // Faster text transition
                   className="text-gray-200 text-sm md:text-base text-center w-full"
                 >
                   {galleries[activeService][modalIndex].caption}
