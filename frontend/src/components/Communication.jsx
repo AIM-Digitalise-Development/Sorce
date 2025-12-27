@@ -75,23 +75,7 @@ const CommunicationSection = () => {
         </div>
 
         {/* Bottom 3-column list - updated card colours */}
-        <div className="mt-6">
-          <h4 className="text-lg font-semibold text-slate-900 mb-4 text-center">Our Facilities & Services</h4>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div className="rounded-xl p-6 shadow" style={{ background: "linear-gradient(135deg,#ffffff,#f0f9ff)", border: "1px solid rgba(14,165,233,0.06)" }}>
-              <h6 className="font-semibold text-slate-900">Clinical Infrastructure</h6>
-              <p className="text-sm text-slate-600 mt-2">ICUs, OTs, Imaging suites and diagnostic labs built to international standards.</p>
-            </div>
-            <div className="rounded-xl p-6 shadow" style={{ background: "linear-gradient(135deg,#ffffff,#fff7f0)", border: "1px solid rgba(249,115,22,0.06)" }}>
-              <h6 className="font-semibold text-slate-900">Medical Equipment</h6>
-              <p className="text-sm text-slate-600 mt-2">CR/DR, CT, MRI, Ventilators, Multipara monitors and more with installation & calibration.</p>
-            </div>
-            <div className="rounded-xl p-6 shadow" style={{ background: "linear-gradient(135deg,#ffffff,#f3fff7)", border: "1px solid rgba(34,197,94,0.06)" }}>
-              <h6 className="font-semibold text-slate-900">Support Services</h6>
-              <p className="text-sm text-slate-600 mt-2">Manpower, logistics, maintenance contracts and compliance management for end‑to‑end operation.</p>
-            </div>
-          </div>
-        </div>
+
       </div>
     </section>
   );
