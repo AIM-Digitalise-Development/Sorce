@@ -66,7 +66,7 @@ const Gallery = () => {
       {/* Banner */}
       <div className="relative w-full">
         <img
-          src="/assets/gallery10.jpg"
+          src="/assets/gallery3.jpg"
           alt="Banner"
           className="w-full h-[50vh] sm:h-[60vh] md:h-[80vh] object-cover"
         />
