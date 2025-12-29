@@ -19,7 +19,7 @@ const services = [
   
   {
     title: "HOSPITAL PLANNING & FACILITY ",
-    images: ["/assets/pla.jpeg", "/assets/pla2.jpeg", "/assets/gallery12.jpg"],
+    images: ["/assets/pla.jpeg", "/assets/pla2.jpeg", "/assets/heros.jpeg"],
     details: [
       "Complete hospital planning and layout design",
       "Construction and setup of all facility zones",
