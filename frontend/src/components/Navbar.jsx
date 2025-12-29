@@ -66,16 +66,7 @@ const Navbar = () => {
           >
             About Us
           </NavLink>
-          <NavLink
-            to="/gallery"
-            className={({ isActive }) =>
-              `hover:text-red-600 ${
-                isActive ? "text-red-600 font-bold" : ""
-              }`
-            }
-          >
-            Gallery
-          </NavLink>
+         
           <NavLink
             to="/activities"
             className={({ isActive }) =>
@@ -85,6 +76,16 @@ const Navbar = () => {
             }
           >
           Products
+          </NavLink>
+           <NavLink
+            to="/gallery"
+            className={({ isActive }) =>
+              `hover:text-red-600 ${
+                isActive ? "text-red-600 font-bold" : ""
+              }`
+            }
+          >
+            Gallery
           </NavLink>
           <NavLink
             to="/contact"
