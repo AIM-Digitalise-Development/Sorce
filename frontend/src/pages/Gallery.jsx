@@ -89,21 +89,7 @@ const Gallery = () => {
         </p>
         
         {/* Category Filter */}
-        <div className="flex justify-center gap-2 mb-6">
-          {['events', 'happy customers'].map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
-              className={`px-4 py-2 rounded capitalize ${
-                selectedCategory === cat 
-                  ? 'bg-blue-600 text-white' 
-                  : 'bg-white text-gray-800 hover:bg-gray-200'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
+       
       </div>
 
       {/* Image Grid */}
