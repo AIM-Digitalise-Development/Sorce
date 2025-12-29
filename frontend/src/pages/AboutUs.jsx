@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 const services = [
   {
     title: "LICENSE MANAGEMENT",
-    images: ["/assets/gallery11.jpg", "/assets/gallery12.jpg", "/assets/gallery13.jpg"],
+    images: ["/assets/lic.jpeg", "/assets/lic1.jpeg", "/assets/gallery13.jpg"],
     details: [
       "Obtain Clinical Establishment License",
       "Fire NOC and Pollution Certificate",
@@ -19,7 +19,7 @@ const services = [
   
   {
     title: "HOSPITAL PLANNING & FACILITY ",
-    images: ["/assets/gallery14.jpg", "/assets/gallery11.jpg", "/assets/gallery12.jpg"],
+    images: ["/assets/pla.jpeg", "/assets/pla2.jpeg", "/assets/gallery12.jpg"],
     details: [
       "Complete hospital planning and layout design",
       "Construction and setup of all facility zones",
@@ -36,7 +36,7 @@ const services = [
   },
   {
     title: "MEDICAL EQUIPMENTS & SERVICES",
-    images: ["/assets/gallery13.jpg", "/assets/gallery14.jpg", "/assets/gallery11.jpg"],
+    images: ["/assets/gallery13.jpg", "/assets/eqi.jpeg", "/assets/gallery11.jpg"],
     details: [
       "Radiology: X-Ray (CR & DR), Ultrasound, CT & MRI support",
       "OPD (Outpatient Department): Examination tables & couches, Stethoscopes, BP apparatus, thermometers, Weighing scales, height measuring stand, Diagnostic sets (otoscope, ophthalmoscope), Basic dressing instruments, Patient chairs & doctor stools, Computers & registration desks.",
@@ -57,7 +57,7 @@ const services = [
   },
   {
     title: "ANNUAL MAINTENANCE",
-    images: ["/assets/gallery12.jpg", "/assets/gallery13.jpg", "/assets/gallery14.jpg"],
+    images: ["/assets/anu.jpeg", "/assets/anu1.jpeg", "/assets/gallery14.jpg"],
     details: [
       "Regular maintenance of hospital machinery",
       "Renewal and management of necessary licenses",
