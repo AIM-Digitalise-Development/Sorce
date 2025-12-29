@@ -38,20 +38,23 @@ const services = [
     title: "MEDICAL EQUIPMENTS & SERVICES",
     images: ["/assets/gallery13.jpg", "/assets/eqi.jpeg", "/assets/gallery11.jpg"],
     details: [
-      "Radiology: X-Ray (CR & DR), Ultrasound, CT & MRI support",
-      "OPD (Outpatient Department): Examination tables & couches, Stethoscopes, BP apparatus, thermometers, Weighing scales, height measuring stand, Diagnostic sets (otoscope, ophthalmoscope), Basic dressing instruments, Patient chairs & doctor stools, Computers & registration desks.",
+    "Radiology:  : X-ray machine (digital preferred), Ultrasound machine, CT scan or MRI (as applicable), Lead aprons & protective barriers, Film processor / PACS system, Radiographic table etc.",
     
-    "Pathology / Laboratory: Centrifuge machine, Microscope (light & binocular), Blood analyzers (hematology, biochemistry), Pipettes, beakers, test tubes, Incubator, hot air oven, Refrigerator for samples, PPE kits, gloves, disinfectants.",
+    "Cardiology: ECG machine, Treadmill test (TMT) system, Echocardiography machine, Cardiac monitors, Defibrillator, Holter monitoring system. & others.",
+
+    "Pathology / Laboratory:  Centrifuge machine, Microscope (light & binocular), Blood analyzers (Semi/Auto), Pipettes, beakers, test tubes, Incubator, hot air oven, Refrigerator for samples, PPE kits, gloves, disinfectants & Syringe & needles, urinometer/urine Analyzer etc.",
     
-    "Blood Bank: Blood storage refrigerator, Deep freezer (-40°C), Blood collection mixers, Plasma extractor, Blood bag sealer, Centrifuge (refrigerated), Hematology analyzer, Cross-matching workstation.",
-    
-    "Radiology: X-ray machine (digital preferred), Ultrasound machine, CT scan or MRI (as applicable), Lead aprons & protective barriers, Film processor / PACS system, Radiographic table.",
-    
-    "Cardiology: ECG machine, Treadmill test (TMT) system, Echocardiography machine, Cardiac monitors, Defibrillator, Holter monitoring system.",
-    
-    "IPD (Inpatient Department): Hospital beds & mattresses, Bedside lockers, Overbed tables, IV stands, Wheelchairs, stretchers, Nurse call system.",
-    
-    "Ward: General ward beds & furniture, Bedpans, urinals, Sanitary bins, Oxygen supply points, Pulse oximeters, BP apparatus, Curtains / partitions."
+    "OPD Instruments: Examination tables & couches, Stethoscopes, BP apparatus, thermometers, Weighing scales, height measuring stand, Diagnostic sets (otoscope, ophthalmoscope), Basic dressing instruments, Patient chairs & doctor stools, Computers & registration desks & etc.",
+
+    "IPD Instruments: Hospital beds & mattresses, Bedside lockers, Overbed tables, IV stands, Wheelchairs, stretchers, Nurse call system.",  
+
+    "Furniture: beds (ICU, Fowler/Semi Fowler, Pediatric), examination tables, trolleys (instrument, dressing, crash, stretcher), chairs (wheelchairs, patient, gynecological, blood donor), storage (lockers, cabinets, almirahs), and accessories such as IV stands, overbed tables, bedside lockers, and partition screens, Bedpans, urinals, Sanitary bins, Curtains / partitions all designed for patient comfort.",  
+
+    "OT Equipments : Anesthesia Machines, Surgical Lights, Patient Monitors, Suction Units, Electrosurgical Units (Cautery), Defibrillators, and C-Arms, alongside various Surgical Tables, Stretchers, and Sterilizers, all vital for procedures.",  
+
+    "Critical Care Equipments: Ventilators,cardiac/vital signs monitors, pulse oximeters, infusion pumps, syringes, airway laryngoscopes, ETTs, suction, defibrillators, crash carts, along with essential beds, pumps (enteral/fluid)  etc.",  
+
+    "Blood Bank: Blood storage refrigerator, Deep freezer (-40°C), Blood collection mixers, Plasma extractor, Blood bag sealer, Centrifuge (refrigerated), Hematology analyzer, Cross-matching workstation & others.",
     ],
     quote: "Equipping hospitals for precision and efficiency."
   },
