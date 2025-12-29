@@ -73,7 +73,7 @@ const Footer = () => {
           rel="noopener noreferrer"
           className="text-blue-400 hover:text-blue-600 underline"
         >
-          AIM Digitalise
+          SOURCE
         </a>.
       </div>
 
