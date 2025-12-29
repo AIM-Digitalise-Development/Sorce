@@ -91,7 +91,7 @@ const AboutUsPage = () => {
       {/* Banner */}
       <div className="relative w-full h-[60vh]">
         <img
-          src="/assets/gallery10.jpg"
+          src="/assets/bg.jpeg"
           alt="About Us Banner"
           className="w-full h-full object-cover"
         />
