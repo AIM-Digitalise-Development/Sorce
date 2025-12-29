@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 const services = [
   {
     title: "LICENSE MANAGEMENT",
-    images: ["/assets/l1.jpeg", "/assets/l2.jpeg", "/assets/l3.jpg"],
+    images: ["/assets/lic.jpeg", "/assets/l1.jpeg", "/assets/l2.jpeg"],
     details: [
       "Obtain Clinical Establishment License",
       "Fire NOC and Pollution Certificate",
