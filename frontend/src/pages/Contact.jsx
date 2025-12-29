@@ -146,7 +146,7 @@ hover:from-yellow-300 hover:via-amber-500 hover:to-yellow-600 transition
             <FaPhoneAlt className="text-red-600 text-3xl mr-4" />
             <div>
               <h3 className="font-semibold text-gray-800">Phone</h3>
-              <a href="tel:9875406850" className="text-gray-600 hover:text-pink-600">9875406850</a>
+              <a href="tel:7980071495" className="text-gray-600 hover:text-pink-600">7980071495</a>
             </div>
           </div>
 
