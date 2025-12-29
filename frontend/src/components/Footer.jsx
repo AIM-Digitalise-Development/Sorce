@@ -17,7 +17,7 @@ const Footer = () => {
         </div>
         
         {/* Links */}
-        <div>
+        {/* <div>
           <h3 className="text-lg font-semibold mb-4">Links</h3>
           <ul className="space-y-2 text-gray-300">
             <li>Home</li>
@@ -25,14 +25,14 @@ const Footer = () => {
             <li>Gallery</li>
             <li>Contact Us</li>
           </ul>
-        </div>
+        </div> */}
         
         {/* Support */}
         <div>
           <h3 className="text-lg font-semibold mb-4">Support</h3>
           <ul className="space-y-2 text-gray-300">
             <li>Email: sourcehealthcaresolutions@gmail.com</li>
-            <li>Phone:+919875406850</li>
+            <li>Phone:+917980071495</li>
           </ul>
           <div className="flex space-x-4 mt-4">
             <a href="#" className="text-white hover:text-gray-400"><FaFacebookF size={20} /></a>
@@ -58,7 +58,8 @@ const Footer = () => {
             ></iframe>
           </div>
           <p className="mt-2 text-gray-300">
-            14B, Sarat Chatterjee Road, Beliaghata, Kolkata, West Bengal, India, Pincode - 700010
+            15/1, Nrisingha Dutta Rd, Barisha, Kolkata, West Bengal 700008, India
+            Land Mark- Near Shaker Bazar
           </p>
         </div>
       </div>
