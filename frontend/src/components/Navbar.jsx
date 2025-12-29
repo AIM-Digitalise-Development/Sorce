@@ -182,17 +182,7 @@ const Navbar = () => {
           >
             About Us
           </NavLink>
-          <NavLink
-            to="/gallery"
-            className={({ isActive }) =>
-              `block px-4 py-2 ${
-                isActive ? "text-red-600 font-bold" : "hover:text-red-600"
-              }`
-            }
-            onClick={toggleMenu}
-          >
-            Gallery
-          </NavLink>
+         
           <NavLink
             to="/activities"
             className={({ isActive }) =>
@@ -203,6 +193,17 @@ const Navbar = () => {
             onClick={toggleMenu}
           >
             Products
+          </NavLink>
+           <NavLink
+            to="/gallery"
+            className={({ isActive }) =>
+              `block px-4 py-2 ${
+                isActive ? "text-red-600 font-bold" : "hover:text-red-600"
+              }`
+            }
+            onClick={toggleMenu}
+          >
+            Gallery
           </NavLink>
           <NavLink
             to="/contact"
