@@ -14,7 +14,7 @@ const LogoPreloader = () => (
   <div className="fixed inset-0 flex flex-col items-center justify-center bg-gradient-to-b from-gray-100 to-gray-300 z-50 transition-opacity duration-700">
     {/* 🔹 Enlarged Logo with Animation */}
     <img 
-      src="/assets/logo.png" 
+      src="/assets/logo.jpeg" 
       alt="Loading..." 
       className="w-[28rem] h-56 animate-pulse scale-100 transition-transform duration-500 ease-in-out" 
     />
