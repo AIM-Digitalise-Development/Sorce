@@ -168,7 +168,7 @@ hover:from-yellow-300 hover:via-amber-500 hover:to-yellow-600 transition
         </div>
       </div>
 
-      <Section />
+      {/* <Section /> */}
             <a
         href="https://wa.me/919875680537?text=i%20have%20a%20query."
         target="_blank"
