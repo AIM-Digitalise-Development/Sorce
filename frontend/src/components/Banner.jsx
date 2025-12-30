@@ -56,7 +56,7 @@ const Banner = () => {
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-semibold text-[#d4af37]"
+            className="text-3xl sm:text-4xl md:text-5xl font-semibold text-yellow-400"
           >
             {banner.title}
           </motion.h1>
@@ -65,8 +65,8 @@ const Banner = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="text-lg sm:text-xl mt-3 text-[#d4af37]"
-          >
+className="text-lg sm:text-xl mt-3 text-yellow-400"
+            >
             {banner.subtitle}
           </motion.p>
 
