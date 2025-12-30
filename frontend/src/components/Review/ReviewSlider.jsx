@@ -87,11 +87,7 @@ const ReviewSlider = () => {
                 onClick={() => setSelectedReview(review)}
                 className="bg-white/10 backdrop-blur-xl rounded-3xl p-8 text-center shadow-2xl border border-white/10 hover:scale-[1.02] transition-all duration-300 cursor-pointer"
               >
-                <img
-                  src={review.imageUrl}
-                  alt={review.name}
-                  className="w-[120px] h-[120px] rounded-full object-cover border-4 border-yellow-500 mx-auto mb-4 shadow-lg"
-                />
+                
                 <p className="text-gray-200 italic text-base leading-relaxed mb-4">
                   “{review.review}”
                 </p>
