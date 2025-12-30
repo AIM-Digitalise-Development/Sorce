@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Logo & About */}
         <div>
-          <img src="/assets/logo.png" alt="Company Logo" className="w-32 mb-4" />
+          <img src="/assets/logo.jpeg" alt="Company Logo" className="w-32 mb-4" />
           <p className="text-sm text-gray-300 text-justify">
             Why Choose Us<br /><br />
             Based in Kolkata, we provide comprehensive hospital solutions — from securing licenses to supplying top-quality medical equipment and trained staff. Our nurses, ayas, and healthcare assistants are skilled, reliable, and maintain the highest hygiene standards. <br /><br />
@@ -48,7 +48,7 @@ const Footer = () => {
           <h3 className="text-lg font-semibold mb-4">Our Location</h3>
           <div className="w-full h-40 overflow-hidden rounded-lg shadow-lg">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.6127646331456!2d88.37177707507837!3d22.593581979476767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0277ef4b37776f%3A0x323d217b002e18cd!2sStore!5e0!3m2!1sen!2sin!4v1740393757735!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.6419839356377!2d88.31215087475448!3d22.48008423635589!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027a700795e487%3A0xb95d4a706e8ae47a!2s15%2C%20Nrisingha%20Dutta%20Rd%2C%20Dutta%20Para%2C%20Purba%20Barisha%2C%20Kolkata%2C%20West%20Bengal%20700008!5e0!3m2!1sen!2sin!4v1767094791937!5m2!1sen!2sin"
               width="100%"
               height="100%"
               style={{ border: 0 }}
