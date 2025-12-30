@@ -53,22 +53,23 @@ const Banner = () => {
 
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center">
           <motion.h1
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-semibold text-yellow-400"
-          >
-            {banner.title}
-          </motion.h1>
+  initial={{ opacity: 0, y: -50 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1 }}
+  className="text-3xl sm:text-4xl md:text-5xl font-bold text-white drop-shadow-[0_3px_10px_rgba(0,0,0,0.45)]"
+>
+  {banner.title}
+</motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5 }}
-className="text-lg sm:text-xl mt-3 text-yellow-400"
-            >
-            {banner.subtitle}
-          </motion.p>
+<motion.p
+  initial={{ opacity: 0, y: 50 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1, delay: 0.4 }}
+  className="text-lg sm:text-xl mt-3 text-white drop-shadow-[0_2px_6px_rgba(0,0,0,0.35)]"
+>
+  {banner.subtitle}
+</motion.p>
+
 
           <motion.div
             initial={{ opacity: 0 }}
