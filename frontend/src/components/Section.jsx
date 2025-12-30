@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { FaHospitalAlt, FaTools, FaClipboardCheck, FaStethoscope, FaTruck, FaUserMd } from "react-icons/fa";
 
 const ChooseYourPlaceSection = () => {
-  const video = "/assets/video.mp4"; // public\assets\video.mp4
+  const video = "/assets/poster.jpg"; // public\assets\video.mp4
   const videoRef = useRef(null);
   const [videoError, setVideoError] = useState(false);
 
@@ -85,7 +85,7 @@ const ChooseYourPlaceSection = () => {
           <video
             ref={videoRef}
             src={video}
-            poster="/assets/video-poster.jpg"
+            poster="/assets/poster.jpg"
             className="absolute inset-0 w-full h-full object-cover"
             preload="auto"
             autoPlay
@@ -97,7 +97,7 @@ const ChooseYourPlaceSection = () => {
           />
         ) : (
           <img
-            src="/assets/video-poster.jpg"
+            src="/assets/poster.jpg"
             alt="background fallback"
             className="absolute inset-0 w-full h-full object-cover"
             aria-hidden
