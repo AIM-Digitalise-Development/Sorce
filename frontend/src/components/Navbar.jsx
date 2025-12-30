@@ -36,9 +36,9 @@ const Navbar = () => {
         <div className="flex items-center h-14"> {/* Fixed height container */}
           <NavLink to="/">
             <img 
-              src="/assets/logo.png" 
+              src="/assets/logo.jpeg" 
               alt="Company Logo" 
-              className="h-36 w-40 object-contain cursor-pointer" 
+              className="h-20 w-30 object-contain cursor-pointer" 
             />
           </NavLink>
         </div>
